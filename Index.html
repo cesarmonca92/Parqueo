@@ -1,4 +1,38 @@
-<div style="margin-top: 1rem;">
-  <label for="manualPlate">Editar matrícula:</label><br>
-  <input type="text" id="manualPlate" placeholder="Ej: ABC123" style="padding: 6px; width: 100%; font-size: 16px;" />
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Parqueo Inteligente</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🅿️ Parqueo Inteligente</h1>
+
+  <input type="file" id="fileInput" accept="image/*" />
+  <button id="btnScan">📷 Escanear Matrícula</button>
+
+  <p id="plateResult">Matrícula detectada aparecerá aquí</p>
+
+  <label for="manualPlate">Editar matrícula:</label><br />
+  <input type="text" id="manualPlate" placeholder="Ej: ABC123" />
+
+  <div style="margin-top: 1rem;">
+    <button id="btnEntry">✅ Registrar Entrada</button>
+    <button id="btnExit">🚗 Registrar Salida</button>
+  </div>
+
+  <p id="amountInfo"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('✔️ Service Worker registrado', reg.scope))
+        .catch(err => console.error('❌ Error con Service Worker', err));
+    }
+  </script>
+</body>
+</html>
